@@ -29,5 +29,7 @@ jobs:
         run: west init -l ${{ github.event.repository.name }}
       - name: west update
         run: west update
+      - name: install zephyr python dependencies
+        run: pip install -r zephyr/scripts/requirements.txt
       - name: build for otterpill board
         run: west build -b otterpill ${{ github.event.repository.name }}
