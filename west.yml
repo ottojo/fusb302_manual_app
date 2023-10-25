@@ -1,0 +1,28 @@
+manifest:
+  remotes:
+    - name: zephyrproject-rtos
+      url-base: https://github.com/zephyrproject-rtos
+    - name: ottojo
+      url-base: https://github.com/ottojo
+
+  projects:
+    - name: zephyr
+      remote: zephyrproject-rtos
+      revision: main
+      import:
+        name-allowlist:
+          - cmsis
+
+    - name: otterpill_zephyr
+      remote: ottojo
+      revision: main
+
+    - name: stm32_comp
+      repo-path: zephyr_stm32_comp
+      remote: ottojo
+      revision: main
+      import: true
+
+    - name: zephyr_fusb302b
+      remote: ottojo
+      revision: main
