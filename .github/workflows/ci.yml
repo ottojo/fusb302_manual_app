@@ -1,0 +1,18 @@
+name: CI
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          path: ${{ github.event.repository.name }}
+      - name: install west
+        run: pip install west
+      - name: initialize west workspace
+        run: west init -l ${{ github.event.repository.name }}
+      - name: west update
+        run: west update
+      - name: build for otterpill board
+        run: west build -b otterpill ${{ github.event.repository.name }}
